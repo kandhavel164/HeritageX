@@ -3289,3 +3289,93 @@ html {
     }
 
 }
+/* =====================================
+   MOBILE BOTTOM MENU - FULL WIDTH FIX
+===================================== */
+
+@media (max-width: 600px) {
+
+    .bottom {
+        position: fixed;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        width: 100%;
+        max-width: 100vw;
+
+        height: 76px;
+
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        padding: 6px 0;
+
+        box-sizing: border-box;
+
+        overflow: hidden;
+
+        z-index: 9999;
+    }
+
+
+    .nav-item {
+
+        width: 100%;
+        min-width: 0;
+
+        margin: 0;
+        padding: 6px 2px;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        box-sizing: border-box;
+
+        font-size: 11px;
+
+        text-align: center;
+
+        white-space: nowrap;
+    }
+
+
+    .nav-icon {
+
+        display: block;
+
+        font-size: 20px;
+
+        line-height: 1;
+
+        margin-bottom: 4px;
+    }
+
+
+    /* Keep page content above the menu */
+
+    .app {
+
+        width: 100%;
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        padding-bottom: 95px;
+    }
+
+}
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
