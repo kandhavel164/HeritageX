@@ -3231,3 +3231,61 @@ html {
 .logout-btn:hover {
     background: #c9302c;
 }
+/* =====================================
+   MOBILE BOTTOM MENU FIX
+===================================== */
+
+@media (max-width: 600px) {
+
+    .bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        height: 72px;
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        align-items: center;
+        justify-items: center;
+
+        padding: 6px 4px;
+
+        box-sizing: border-box;
+
+        z-index: 1000;
+    }
+
+    .nav-item {
+        width: 100%;
+        min-width: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 3px;
+
+        padding: 6px 2px;
+
+        font-size: 11px;
+        text-align: center;
+
+        white-space: nowrap;
+    }
+
+    .nav-icon {
+        font-size: 20px;
+        line-height: 1;
+    }
+
+    /* Prevent content from hiding behind menu */
+    .app {
+        padding-bottom: 90px;
+    }
+
+}
