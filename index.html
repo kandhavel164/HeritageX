@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        HeritageX - Smart Tourism
+    </title>
+
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Leaflet Map CSS -->
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+
+    <!-- External CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <main class="app">
+
+
+        <!-- ========================= -->
+        <!-- HERO SECTION -->
+        <!-- ========================= -->
+
+        <header class="hero">
+
+
+            <div class="top">
+
+
+                <div class="brand">
+
+                    HERITAGE<span>X</span>
+
+                </div>
+
+
+                <button
+                    class="lang"
+                    id="langBtn"
+                >
+
+                    தமிழ் / EN
+
+                </button>
+
+
+            </div>
+
+
+            <div
+                class="eyebrow"
+                id="eyebrow"
+            >
+
+                Smart Tourism Companion
+
+            </div>
+
+
+            <h1 id="welcome">
+
+                Explore heritage beyond the photograph.
+
+            </h1>
+
+
+            <p id="subtitle">
+
+                Discover stories, culture, local traditions, and nearby experiences right where you stand.
+
+            </p>
+
+
+        </header>
+
+
+        <!-- ========================= -->
+        <!-- HERITAGE SITE CARD -->
+        <!-- ========================= -->
+
+        <section class="site-card card">
+
+
+            <div class="temple">
+
+
+                <!-- Important: JavaScript updates this image -->
+
+                <img
+                    id="siteImage"
+                    src="images/thindal-murugan-temple.jpg"
+                    alt="Thindal Murugan Temple"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='🛕';"
+                >
+
+
+            </div>
+
+
+            <div>
+
+
+                <!-- Important: JavaScript updates this name -->
+
+                <h2 id="siteName">
+
+                    Thindal Murugan Temple
+
+                </h2>
+
+
+                <!-- Important: JavaScript updates this location -->
+
+                <p id="siteLocation">
+
+                    Erode, Tamil Nadu
+
+                </p>
+
+
+                <div class="verified">
+
+                    ● Verified Heritage Profile
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- EXPLORE SECTION -->
+        <!-- ========================= -->
+
+        <section class="section">
+
+
+            <div class="title-row">
+
+
+                <h3 id="exploreTitle">
+
+                    Explore this site
+
+                </h3>
+
+
+                <button id="mapBtn">
+
+                    Map ↗
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- CATEGORY CHIPS -->
+        <!-- ========================= -->
+
+        <div class="chips">
+
+
+            <button
+                class="chip active"
+                data-type="story"
+            >
+
+                📖 Story
+
+            </button>
+
+
+            <button
+                class="chip"
+                data-type="architecture"
+            >
+
+                🏛 Architecture
+
+            </button>
+
+
+            <button
+                class="chip"
+                data-type="rituals"
+            >
+
+                ✨ Rituals
+
+            </button>
+
+
+            <button
+                class="chip"
+                data-type="tips"
+            >
+
+                📍 Visitor Tips
+
+            </button>
+
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- HERITAGE STORY -->
+        <!-- ========================= -->
+
+        <section class="section">
+
+
+            <article class="story card">
+
+
+                <div class="story-top">
+
+
+                    <div
+                        class="label"
+                        id="storyLabel"
+                    >
+
+                        Heritage Story
+
+                    </div>
+
+
+                    <button
+                        class="play"
+                        id="playBtn"
+                        aria-label="Listen to story"
+                    >
+
+                        ▶
+
+                    </button>
+
+
+                </div>
+
+
+                <h3 id="storyTitle">
+
+                    A Hill of Faith and History
+
+                </h3>
+
+
+                <p id="storyText">
+
+                    Discover the cultural importance of this revered Murugan temple and the traditions that bring the community together.
+
+                </p>
+
+
+            </article>
+
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- AI HERITAGE GUIDE TITLE -->
+        <!-- ========================= -->
+
+        <section class="section">
+
+
+            <div class="title-row">
+
+
+                <h3>
+
+                    Ask HeritageX
+
+                </h3>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- AI HERITAGE GUIDE -->
+        <!-- ========================= -->
+
+        <article class="guide card">
+
+
+            <div class="guide-icon">
+
+                ✦
+
+            </div>
+
+
+            <div>
+
+
+                <h3>
+
+                    Your AI Heritage Guide
+
+                </h3>
+
+
+                <p>
+
+                    Ask simple questions in Tamil or English.
+
+                </p>
+
+
+                <button
+                    class="ask"
+                    id="askBtn"
+                >
+
+                    Try: “Why is this temple important?”
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+        <!-- ========================= -->
+        <!-- NEARBY CULTURE -->
+        <!-- ========================= -->
+
+        <section class="section">
+
+
+            <div class="title-row">
+
+
+                <h3>
+
+                    Nearby Culture
+
+                </h3>
+
+
+                <button id="allBtn">
+
+                    View all
+
+                </button>
+
+
+            </div>
+
+
+            <div class="places">
+
+
+                <article class="place card">
+
+
+                    <div class="place-icon">
+
+                        🍛
+
+                    </div>
+
+
+                    <b>
+
+                        Local Food
+
+                    </b>
+
+
+                    <small>
+
+                        2 nearby
+
+                    </small>
+
+
+                </article>
+
+
+                <article class="place card">
+
+
+                    <div class="place-icon">
+
+                        🧵
+
+                    </div>
+
+
+                    <b>
+
+                        Artisans
+
+                    </b>
+
+
+                    <small>
+
+                        3 nearby
+
+                    </small>
+
+
+                </article>
+
+
+                <article class="place card">
+
+
+                    <div class="place-icon">
+
+                        🧭
+
+                    </div>
+
+
+                    <b>
+
+                        Places
+
+                    </b>
+
+
+                    <small>
+
+                        4 to explore
+
+                    </small>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- REPORT ISSUE -->
+        <!-- ========================= -->
+
+        <section class="section">
+
+
+            <article class="report card">
+
+
+                <div class="report-icon">
+
+                    🛡️
+
+                </div>
+
+
+                <div>
+
+
+                    <h3>
+
+                        Help protect this site
+
+                    </h3>
+
+
+                    <p>
+
+                        Report litter, damage, or access issues.
+
+                    </p>
+
+
+                </div>
+
+
+                <button id="reportBtn">
+
+                    Report
+
+                </button>
+
+
+            </article>
+
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- BOTTOM NAVIGATION -->
+        <!-- ========================= -->
+
+        <nav class="bottom">
+
+
+            <button
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+
+                    ⌂
+
+                </span>
+
+                Home
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="passportBtn"
+            >
+
+                <span class="nav-icon">
+
+                    ◈
+
+                </span>
+
+                Passport
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="scanBtn"
+            >
+
+                <span class="nav-icon">
+
+                    ▣
+
+                </span>
+
+                Scan
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="profileBtn"
+            >
+
+                <span class="nav-icon">
+
+                    ☺
+
+                </span>
+
+                Profile
+
+            </button>
+
+
+        </nav>
+
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- MAP MODAL -->
+    <!-- ========================= -->
+
+    <div
+        class="map-modal"
+        id="mapModal"
+    >
+
+
+        <div class="map-container">
+
+
+            <div class="map-header">
+
+
+                <div>
+
+
+                    <h2>
+
+                        Explore Heritage Sites
+
+                    </h2>
+
+
+                    <p>
+
+                        Tap a temple marker to explore
+
+                    </p>
+
+
+                </div>
+
+
+                <button
+                    id="closeMapBtn"
+                >
+
+                    ✕
+
+                </button>
+
+
+            </div>
+
+
+            <button
+                class="location-button"
+                id="myLocationBtn"
+            >
+
+                📍 My Location
+
+            </button>
+
+
+            <div
+                id="heritageMap"
+            ></div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- GENERAL MODAL -->
+    <!-- ========================= -->
+
+    <div
+        class="modal"
+        id="modal"
+    >
+
+
+        <section
+            class="sheet"
+            id="sheet"
+        ></section>
+
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+
+    <!-- Leaflet JavaScript -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+   <script src="https://unpkg.com/html5-qrcode"></script>
+    <!-- Your JavaScript -->
+
+    <script
+        src="script.js"
+    ></script>
+
+
+</body>
+
+</html>
