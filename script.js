@@ -1276,78 +1276,63 @@ document
 
 function playCurrentAudio() {
 
+    if (!("speechSynthesis" in window)) {
+        alert("Audio is not supported in this browser.");
+        return;
+    }
 
+    const text = storyText.textContent.trim();
+
+    if (!text) {
+        alert("No story text available.");
+        return;
+    }
+
+    // Stop any previous audio
     window.speechSynthesis.cancel();
 
-
     speechUtterance =
-        new SpeechSynthesisUtterance(
+        new SpeechSynthesisUtterance(text);
 
-            storyText.textContent
+    // Language
+    speechUtterance.lang =
+        currentLanguage === "ta"
+            ? "ta-IN"
+            : "en-IN";
 
+    speechUtterance.rate = 0.9;
+    speechUtterance.pitch = 1;
+    speechUtterance.volume = 1;
+
+    speechUtterance.onstart = function () {
+
+        playBtn.textContent = "⏸";
+
+    };
+
+    speechUtterance.onend = function () {
+
+        playBtn.textContent = "▶";
+
+    };
+
+    speechUtterance.onerror = function (event) {
+
+        console.error(
+            "Speech error:",
+            event.error
         );
 
+        playBtn.textContent = "▶";
 
-    if (
-        currentLanguage === "ta"
-    ) {
+    };
 
-        speechUtterance.lang =
-            "ta-IN";
-
-    }
-
-    else {
-
-        speechUtterance.lang =
-            "en-IN";
-
-    }
-
-
-    speechUtterance.rate =
-        0.9;
-
-
-    speechUtterance.onstart =
-        function () {
-
-            document
-                .getElementById("playBtn")
-                .textContent =
-                "⏸";
-
-        };
-
-
-    speechUtterance.onend =
-        function () {
-
-            document
-                .getElementById("playBtn")
-                .textContent =
-                "▶";
-
-        };
-
-
-    speechUtterance.onerror =
-        function () {
-
-            document
-                .getElementById("playBtn")
-                .textContent =
-                "▶";
-
-        };
-
-
+    // Start audio
     window.speechSynthesis.speak(
         speechUtterance
     );
 
 }
-
 
 // ======================================================
 // LANGUAGE TOGGLE
